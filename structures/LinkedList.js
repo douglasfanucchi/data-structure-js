@@ -24,6 +24,38 @@ class LinkedList {
         current.next = node;
         return ++this.count;
     }
+
+    insert(element, position) {
+        if( position > this.count || position < 0 )
+            return -1;
+
+        let currentIndex = 0;
+        let currentNode  = this.head;
+
+        if(position === currentIndex) {
+            this.head = new Node(element);
+            this.head.next = currentNode;
+            return ++this.count;
+        }
+
+        let nextPosition = currentIndex + 1;
+
+        while( nextPosition < position ) {
+            currentNode = currentNode.next;
+            nextPosition++;
+        }
+
+        if( currentNode.next !== undefined ) {
+            const { next } = currentNode;
+            currentNode.next = new Node(element);
+            currentNode = currentNode.next;
+            currentNode.next = next;
+            return ++this.count;
+        }
+
+        currentNode.next = new Node(element);
+        return ++this.count;
+    }
 }
 
 module.exports = LinkedList
