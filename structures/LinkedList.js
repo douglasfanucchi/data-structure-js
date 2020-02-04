@@ -96,6 +96,39 @@ class LinkedList {
         previous.next = currentNode.next;
         return --this.count;
     }
+
+    remove(element) {
+        let currentNode  = this.head;
+
+        if( currentNode.element === element && currentNode.next === undefined) {
+            this.head = undefined;
+            return --this.count;
+        } else if(currentNode.element === element) {
+            this.head = currentNode.next;
+            return --this.count;
+        }
+
+        while( currentNode.next !== undefined && !this.equalsFn(currentNode.next.element, element) )
+            currentNode = currentNode.next;
+
+        if( !currentNode.next )
+            return -1;
+
+        let previous = currentNode;
+        currentNode = currentNode.next;
+        previous.next = currentNode.next;
+
+        return --this.count;
+    }
+
+    print() {
+        let currentNode = this.head;
+
+        while(currentNode !== undefined) {
+            console.log( currentNode.element );
+            currentNode = currentNode.next;
+        }
+    } 
 }
 
 module.exports = LinkedList
