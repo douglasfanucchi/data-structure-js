@@ -67,27 +67,20 @@ class LinkedList {
         while( currentIndex++ !== position )
             currentNode = currentNode.next;
 
-        return currentNode.element;
+        return currentNode;
     }
 
     removeAt(position) {
         if( position >= this.count || position < 0 )
             return -1;
 
-        let currentIndex = 0;
-
         if( position === 0) {
             this.head = this.head.next;
             return --this.count;
         }
 
-        let currentNode = this.head;
-        let previous;
-
-        while( currentIndex++ < position ) {
-            previous    = currentNode;
-            currentNode = currentNode.next;
-        }
+        let previous = this.getElementAt(position - 1);
+        let current  = previous.next;
 
         previous.next = currentNode.next;
         return --this.count;
