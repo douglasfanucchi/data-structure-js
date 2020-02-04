@@ -101,15 +101,15 @@ class LinkedList {
         let currentIndex = 0;
         let current = this.head;
 
-        while(current !== undefined && !this.equalsFn(current.element, element)) {
+        while(current !== undefined) {
+            if( this.equalsFn(current.element, element) )
+                return currentIndex;
+            
             current = current.next;
             currentIndex++;
         }
 
-        if( !current )
-            return -1;
-
-        return currentIndex;
+        return -1;
     }
 
     print() {
