@@ -76,12 +76,8 @@ class LinkedList {
 
         let currentIndex = 0;
 
-        if( position === 0 && this.head.next !== undefined) {
+        if( position === 0) {
             this.head = this.head.next;
-            return --this.count;
-
-        } else if( position === 0 ) {
-            this.head = undefined;
             return --this.count;
         }
 
@@ -98,15 +94,12 @@ class LinkedList {
     }
 
     remove(element) {
-        let currentNode  = this.head;
-
-        if( currentNode.element === element && currentNode.next === undefined) {
-            this.head = undefined;
-            return --this.count;
-        } else if(currentNode.element === element) {
-            this.head = currentNode.next;
+        if( this.equalsFn(this.head.element, element) ) {
+            this.head = this.head.next;
             return --this.count;
         }
+
+        let currentNode = this.head;
 
         while( currentNode.next !== undefined && !this.equalsFn(currentNode.next.element, element) )
             currentNode = currentNode.next;
