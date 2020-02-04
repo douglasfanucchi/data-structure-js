@@ -77,24 +77,8 @@ class LinkedList {
     }
 
     remove(element) {
-        if( this.equalsFn(this.head.element, element) ) {
-            this.head = this.head.next;
-            return --this.count;
-        }
-
-        let currentNode = this.head;
-
-        while( currentNode.next !== undefined && !this.equalsFn(currentNode.next.element, element) )
-            currentNode = currentNode.next;
-
-        if( !currentNode.next )
-            return -1;
-
-        let previous = currentNode;
-        currentNode = currentNode.next;
-        previous.next = currentNode.next;
-
-        return --this.count;
+        const index = this.getIndexOf(element);
+        return this.removeAt(index);
     }
 
     indexOf(element) {
