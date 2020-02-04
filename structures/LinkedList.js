@@ -56,6 +56,19 @@ class LinkedList {
         currentNode.next = new Node(element);
         return ++this.count;
     }
+
+    getElementAt(position) {
+        if( position >= this.count || position < 0 )
+            return -1;
+
+        let currentIndex = 0;
+        let currentNode = this.head;
+
+        while( currentIndex++ !== position )
+            currentNode = currentNode.next;
+
+        return currentNode.element;
+    }
 }
 
 module.exports = LinkedList
