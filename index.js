@@ -8,4 +8,6 @@ linked.push('Fanucchi');
 
 linked.removeAt(0);
 
+linked.insert('Felipe', 3);
+
 linked.print();

@@ -29,31 +29,21 @@ class LinkedList {
         if( position > this.count || position < 0 )
             return -1;
 
-        let currentIndex = 0;
-        let currentNode  = this.head;
+        let current = this.head;
 
-        if(position === currentIndex) {
+        if(position === 0) {
             this.head = new Node(element);
-            this.head.next = currentNode;
+            this.head.next = current;
             return ++this.count;
         }
 
-        let nextPosition = currentIndex + 1;
+        let previous = this.getElementAt(position - 1);
+        let next = previous.next;
+        current = new Node(element);
 
-        while( nextPosition < position ) {
-            currentNode = currentNode.next;
-            nextPosition++;
-        }
+        previous.next = current;
+        current.next  = next;
 
-        if( currentNode.next !== undefined ) {
-            const { next } = currentNode;
-            currentNode.next = new Node(element);
-            currentNode = currentNode.next;
-            currentNode.next = next;
-            return ++this.count;
-        }
-
-        currentNode.next = new Node(element);
         return ++this.count;
     }
 
@@ -82,7 +72,7 @@ class LinkedList {
         let previous = this.getElementAt(position - 1);
         let current  = previous.next;
 
-        previous.next = currentNode.next;
+        previous.next = current.next;
         return --this.count;
     }
 
