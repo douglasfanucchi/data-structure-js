@@ -97,6 +97,21 @@ class LinkedList {
         return --this.count;
     }
 
+    indexOf(element) {
+        let currentIndex = 0;
+        let current = this.head;
+
+        while(current !== undefined && !this.equalsFn(current.element, element)) {
+            current = current.next;
+            currentIndex++;
+        }
+
+        if( !current )
+            return -1;
+
+        return currentIndex;
+    }
+
     print() {
         let currentNode = this.head;
 
