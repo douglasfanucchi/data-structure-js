@@ -96,13 +96,31 @@ class LinkedList {
         return -1;
     }
 
-    print() {
-        let currentNode = this.head;
+    size() {
+        return this.count;
+    }
 
-        while(currentNode !== undefined) {
-            console.log( currentNode.element );
-            currentNode = currentNode.next;
+    isEmpty() {
+        return this.size() === 0;
+    }
+
+    toString() {
+        if( this.isEmpty() )
+            return '';
+
+        let current = this.head;
+        let string = `${current.element}`;
+
+        while( current.next !== undefined ) {
+            current = current.next;
+            string = `${string},${current.element}`;
         }
+
+        return string;
+    }
+
+    print() {
+        console.log( this.toString() );
     } 
 }
 
