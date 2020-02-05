@@ -119,9 +119,28 @@ class LinkedList {
         return string;
     }
 
+    toStringReverse() {
+        if( this.isEmpty() )
+            return '';
+
+        let current = this.head;
+        let string = `${current.element}`;
+        
+        while(current.next !== undefined) {
+            current = current.next;
+            string = `${current.element},${string}`;
+        }
+
+        return string;
+    }
+
     print() {
         console.log( this.toString() );
-    } 
+    }
+
+    printReverse() {
+        console.log( this.toStringReverse() );
+    }
 }
 
 module.exports = LinkedList
