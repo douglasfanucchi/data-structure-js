@@ -5,7 +5,16 @@ class Node {
     }
 }
 
+class DoublyNode extends Node {
+    constructor(element) {
+        super(element);
+
+        this.prev = undefined;
+    }
+}
+
 
 module.exports = {
-    Node
+    Node,
+    DoublyNode
 }
