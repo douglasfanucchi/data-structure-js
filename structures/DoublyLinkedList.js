@@ -46,6 +46,33 @@ class DoublyLinkedList extends LinkedList {
 
         return current;
     }
+
+    removeAt(index) {
+        if( index >= this.count || index < 0 )
+            return -1;
+
+        let current, prev, next;
+
+        if( index === 0 && this.count === 1) {
+            this.head = undefined;
+            this.tail = undefined;
+
+            return --this.count;
+        } else if( index === 0 ) {
+            this.head = this.head.next;
+            this.head.prev = undefined;
+
+            return --this.count;
+        }
+
+        current = this.getElementAt(index);
+        prev    = current.prev;
+        next    = current.next;
+
+        prev.next = next;
+        next.prev = prev;
+        return --this.count;
+    }
 }
 
 module.exports = DoublyLinkedList;
