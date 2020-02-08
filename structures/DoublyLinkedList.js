@@ -9,6 +9,9 @@ class DoublyLinkedList extends LinkedList {
     }
 
     insert(element, index) {
+        if( index < 0 || index > this.count )
+            return undefined;
+
         if( index === 0 && this.head === undefined) {
             this.count++;
             return this.tail = this.head = new DoublyNode(element);
